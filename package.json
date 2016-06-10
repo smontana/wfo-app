@@ -1,0 +1,11 @@
+{
+  "name": "wfo-app",
+  "version": "1.1.0",
+  "main": "main.js",
+  "dependencies": {
+    "c3": "^0.4.11",
+    "dotenv": "^2.0.0",
+    "jade": "~1.11.0",
+    "seriate": "^0.7.1"
+  }
+}
