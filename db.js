@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 var config = {
   user: process.env.DB_UN,
   password: process.env.DB_PW,
@@ -8,66 +10,53 @@ var config = {
 var sql = require('seriate');
 sql.setDefaultConfig(config);
 
-// --------------------------
+// ---------------------------------------------------------
 
-function build_solution_inin_data_report(data) {
+function build_homepage_calls_ans_vs_off_graph(data) {
+  var can_stats = _.filter(data, ['solution', 'CAN']);
+  var cd_stats = _.filter(data, ['solution', 'CD']);
+  var crm_stats = _.filter(data, ['solution', 'CRM']);
+  var cso_stats = _.filter(data, ['solution', 'CSO']);
+  var dms_stats = _.filter(data, ['solution', 'DMS']);
+  var sfi_stats = _.filter(data, ['solution', 'F&I']);
+  var rts_stats = _.filter(data, ['solution', 'RTS']);
 
-  calls_offered = _.map(data, function(stats) {
+  // ---------------------------
+
+  SFI_calls_offered = _.map(sfi_stats, function(stats) {
     return stats.nEnteredAcd
   })
-  calls_offered.unshift('calls_offered');
+  SFI_calls_offered.unshift('SFI_calls_offered');
 
-  calls_answered = _.map(data, function(stats) {
+  SFI_calls_answered = _.map(sfi_stats, function(stats) {
     return stats.nAnsweredAcd
   })
-  calls_answered.unshift('calls_answered');
+  SFI_calls_answered.unshift('SFI_calls_answered');
 
-  calls_abandoned = _.map(data, function(stats) {
-    return stats.nAbandonedAcd
-  })
-  calls_abandoned.unshift('calls_abandoned');
+  // ---------------------------
 
-  calls_flowed_out = _.map(data, function(stats) {
-    return stats.nFlowOutAcd
-  })
-  calls_flowed_out.unshift('calls_flowed_out');
+  dates = _.map(sfi_stats, function(stats) {
+    var week_ending = moment(stats.week_ending).add(1, 'day').format("YYYY-MM-DD");
 
-  calls_transfered = _.map(data, function(stats) {
-    return stats.nTransferedAcd
-  })
-  calls_transfered.unshift('calls_transfered');
-
-  solutions = _.map(data, function(stats) {
-    return stats.solution
-  })
-  solutions.unshift('solutions');
-
-  dates = _.map(data, function(stats) {
-    return stats.week_ending
+    return week_ending
   })
   dates.unshift('x');
+
+  // ---------------------------
   
   var chart = c3.generate({
-    bindto: "#solution-inin-data-report",
+    bindto: "#homepage-first-report",
     data: {
       x: 'x',
       columns: [
         dates,
-        solutions,
-        calls_offered,
-        calls_answered,
-        calls_abandoned,
-        calls_flowed_out,
-        calls_transfered
+        SFI_calls_offered,
+        SFI_calls_answered
       ],
       names: {
         dates: 'Week Ending',
-        solutions: 'Solutions',
-        calls_offered: 'Offered',
-        calls_answered: 'Answered',
-        calls_abandoned: 'Abandoned',
-        calls_flowed_out: 'Flowed Out',
-        calls_transfered: 'Transfered'
+        SFI_calls_offered: 'F&I - Offered',
+        SFI_calls_answered: 'F&I - Answered'
       }
     },
     axis: {
@@ -90,14 +79,111 @@ function build_solution_inin_data_report(data) {
   });
 }
 
-// --------------------------
+// ---------------------------------------------------------
+
+// ---------------------------------------------------------
+
+function build_homepage_calls_abd_flow_tran_graph(data) {
+  var can_stats = _.filter(data, ['solution', 'CAN']);
+  var cd_stats = _.filter(data, ['solution', 'CD']);
+  var crm_stats = _.filter(data, ['solution', 'CRM']);
+  var cso_stats = _.filter(data, ['solution', 'CSO']);
+  var dms_stats = _.filter(data, ['solution', 'DMS']);
+  var sfi_stats = _.filter(data, ['solution', 'F&I']);
+  var rts_stats = _.filter(data, ['solution', 'RTS']);
+
+  // ---------------------------
+
+  SFI_calls_abd = _.map(sfi_stats, function(stats) {
+    return stats.nAbandonedAcd
+  })
+  SFI_calls_abd.unshift('SFI_calls_abd');
+
+  SFI_calls_flow = _.map(sfi_stats, function(stats) {
+    return stats.nFlowOutAcd
+  })
+  SFI_calls_flow.unshift('SFI_calls_flow');
+
+  SFI_calls_tran = _.map(sfi_stats, function(stats) {
+    return stats.nTransferedAcd
+  })
+  SFI_calls_tran.unshift('SFI_calls_tran');
+
+  // ---------------------------
+
+  dates = _.map(sfi_stats, function(stats) {
+    var week_ending = moment(stats.week_ending).add(1, 'day').format("YYYY-MM-DD");
+
+    return week_ending
+  })
+  dates.unshift('x');
+
+  // ---------------------------
+  
+  var chart = c3.generate({
+    bindto: "#homepage-second-report",
+    data: {
+      x: 'x',
+      columns: [
+        dates,
+        SFI_calls_abd,
+        SFI_calls_flow,
+        SFI_calls_tran
+      ],
+      names: {
+        dates: 'Week Ending',
+        SFI_calls_abd: 'F&I - Abandoned',
+        SFI_calls_flow: 'F&I - Flow Outs',
+        SFI_calls_tran: 'F&I - Transfered'
+      }
+    },
+    axis: {
+      x: {
+        type: 'timeseries',
+        tick: {
+          format: '%m-%d-%y',
+          fit: true
+        }
+      }
+    },
+    grid: {
+      x: {
+        show: true
+      },
+      y: {
+        show: true
+      }
+    }
+  });
+}
+
+// ---------------------------------------------------------
+
+var query_1 = "SELECT ED.WeekEnding AS week_ending, I.Solution AS solution, SUM(I.nEnteredAcd) AS nEnteredAcd, SUM(I.nAnsweredAcd) AS nAnsweredAcd, SUM(I.nAbandonedAcd) AS nAbandonedAcd, SUM(I.nFlowOutAcd) AS nFlowOutAcd, SUM(I.nTransferedAcd) AS nTransferedAcd FROM EmployeeServices.dbo.Agent_ININ_Data_By_Day AS I INNER JOIN EmployeeServices.dbo.EmployeeDates AS ED ON I.FullDate = ED.FullDate WHERE I.InteractionType = 'Call' GROUP BY ED.WeekEnding, I.Solution ORDER BY ED.WeekEnding, I.Solution";
+
+var query_2 = "SELECT \
+  ED.WeekEnding AS week_ending, \
+  I.Solution AS solution, \
+  SUM(I.nEnteredAcd) AS nEnteredAcd, \
+  SUM(I.nAnsweredAcd) AS nAnsweredAcd, \
+  SUM(I.nAbandonedAcd) AS nAbandonedAcd, \
+  SUM(I.nFlowOutAcd) AS nFlowOutAcd, \
+  SUM(I.nTransferedAcd) AS nTransferedAcd \
+  FROM EmployeeServices.dbo.Agent_ININ_Data_By_Day AS I \
+  INNER JOIN EmployeeServices.dbo.EmployeeDates AS ED \
+  ON I.FullDate = ED.FullDate \
+  WHERE I.InteractionType = 'Call' \
+  AND I.Solution = 'CRM' \
+  GROUP BY ED.WeekEnding, I.Solution \
+  ORDER BY ED.WeekEnding, I.Solution"
 
 window.onload = function() {
   sql.execute( {
-    query: "SELECT ED.WeekEnding AS week_ending, I.Solution AS solution, SUM(I.nEnteredAcd) AS nEnteredAcd, SUM(I.nAnsweredAcd) AS nAnsweredAcd, SUM(I.nAbandonedAcd) AS nAbandonedAcd, SUM(I.nFlowOutAcd) AS nFlowOutAcd, SUM(I.nTransferedAcd) AS nTransferedAcd FROM EmployeeServices.dbo.Agent_ININ_Data_By_Day AS I INNER JOIN EmployeeServices.dbo.EmployeeDates AS ED ON I.FullDate = ED.FullDate WHERE I.InteractionType = 'Call' GROUP BY ED.WeekEnding, I.Solution ORDER BY ED.WeekEnding, I.Solution"
+    query: query_1
   }).then( function( data ) {
     console.log(data);
-    build_solution_inin_data_report(data);
+    build_homepage_calls_ans_vs_off_graph(data);
+    build_homepage_calls_abd_flow_tran_graph(data);
 
   }, function( err ) {
     console.log( err );

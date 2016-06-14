@@ -7,6 +7,7 @@
     <link href="public/stylesheets/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="public/stylesheets/c3.min.css" rel="stylesheet" type="text/css">
     <link href="public/stylesheets/style.css" rel="stylesheet">
+    <link href="public/stylesheets/myStyles.css" rel="stylesheet">
     <script type="text/javascript" src="public/js/d3.min.js"></script>
     <script type="text/javascript" src="public/js/c3.min.js"></script>
     <script type="text/javascript" src="db.js"></script>
@@ -18,33 +19,25 @@
 
         <ul class="nav nav-list" id="sidebar">
 
-          <li class="nav-header">Favorites</li>
+          <li class="nav-header">Menu</li>
 
           <li class="active">
             <a href="#" nw-path="~/"><i class="icon-white icon-home"></i> Home</a>
           </li>
 
           <li>
-            <a href="#" nw-path="~/Documents"><i class="icon-book"></i> Documents</a>
+            <a href="#" nw-path="~/Documents"><i class="icon-signal"></i> ININ Data</a>
           </li>
 
           <li>
-            <a href="#" nw-path="~/Pictures"><i class="icon-picture"></i> Pictures</a>
+            <a href="#" nw-path="~/Pictures"><i class="icon-book"></i> Attendance</a>
           </li>
 
-          <li>
-            <a href="#" nw-path="~/Music"><i class="icon-music"></i> Music</a>
-          </li>
-
-          <li>
-            <a href="#" nw-path="~/Movies"><i class="icon-film"></i> Movies</a>
-          </li>
-
-          <li class="nav-header">Network</li>
+          <li class="nav-header">Info</li>
 
           <li class="divider"></li>
 
-          <li><a href="#" nw-call="about" onclick="App.about()"><i class="icon-flag"></i> About</a></li>
+          <li><a href="#" nw-call="about" onclick="App.about()"><i class="icon-flag"></i> Formulas</a></li>
 
         </ul>
 
@@ -60,7 +53,17 @@
 
       <div class="row" style="background: #FFF; -webkit-border-radius: 2px; margin: -5px 1px 0 -19px; height: 100%; overflow: auto">
 
-      <div id="solution-inin-data-report"></div>
+      <div class="homepage-graph-rows">
+
+        <div class="row homepage-first-row">
+          <div id="homepage-first-report"></div>
+        </div>
+
+        <div class="row homepage-second-row">
+          <div id="homepage-second-report"></div>
+        </div>
+
+      </div>
 
       <ul style="margin: 5px;" id="files"></ul>
 
