@@ -1,6 +1,12 @@
-const electron = require('electron');
-const app = electron.app // Module to control application life
-const BrowserWindow = electron.BrowserWindow // Module to create native browser window
+// const electron = require('electron');
+// const app = electron.app;
+// const BrowserWindow = electron.BrowserWindow;
+
+'use strict';
+
+const {app, BrowserWindow} = require('electron');
+const locals = {/* ...*/};
+const jade = require('electron-jade')({pretty: true}, locals);
 
 require('dotenv').load();
 
@@ -15,17 +21,16 @@ app.on('window-all-closed', function() {
 // This method will be called when Electron has done everything
 // initialization and ready for creating browser windows.
 app.on('ready', function() {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600});
 
-  // and load the index.html of the app.
-  mainWindow.loadURL('file://' + __dirname + '/index.html');
+  mainWindow = new BrowserWindow({
+    width: 800, 
+    height: 600
+  });
 
-  // Emitted when the window is closed.
+  mainWindow.loadURL(`file://${__dirname}/index.jade`);
+  // mainWindow.loadURL('file://' + __dirname + '/index.html');
+  
   mainWindow.on('closed', function() {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
     mainWindow = null;
   });
 });

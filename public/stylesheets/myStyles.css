@@ -1,3 +1,40 @@
+.nav-sidebar {
+  position: absolute; 
+  left: 10px; 
+  right: 10px; 
+  top: 10px; 
+  bottom: 10px;
+}
+
+.nav-sidebar .well {
+  float: left; 
+  width: 160px; 
+  padding: 8px;
+}
+
+.body-area {
+  float: left; 
+  position: absolute; 
+  left: 210px; 
+  right: 0; 
+  top: 0; 
+  bottom: 50px;
+}
+
+.body-area-bottom {
+  padding: 0;
+  margin: 0;
+  margin: 5px;
+}
+
+.homepage-main-row {
+  background: #FFF; 
+  -webkit-border-radius: 2px; 
+  margin: -5px 1px 0 -19px; 
+  height: 100%; 
+  overflow: auto;
+}
+
 .homepage-graph-rows {
   padding: 2em;
 }
@@ -10,4 +47,14 @@
 #homepage-second-report {
   padding: 1em;
   width: 900px;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }
