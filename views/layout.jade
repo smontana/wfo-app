@@ -1,40 +1,53 @@
 doctype html
 html
   head
-    block title
-      title Default title
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(href='public/stylesheets/bootstrap/css/bootstrap.css', rel='stylesheet')
-    link(href='public/stylesheets/c3.min.css', rel='stylesheet', type='text/css')
-    link(href='public/stylesheets/style.css', rel='stylesheet')
-    link(href='public/stylesheets/myStyles.css', rel='stylesheet')
-    script(type='text/javascript', src='public/js/d3.min.js')
-    script(type='text/javascript', src='public/js/c3.min.js')
-    script(type='text/javascript', src='public/js/db.js')
+    block head
+      block title
+        title Default title
+      meta(name='viewport', content='width=device-width, initial-scale=1.0')
+      link(href='public/stylesheets/photon-kit/css/photon.css', rel='stylesheet')
+      link(href='public/stylesheets/c3.min.css', rel='stylesheet', type='text/css')
+      link(href='public/stylesheets/myStyles.css', rel='stylesheet')
+      block scripts
+        script(type='text/javascript', src='public/js/d3.min.js')
+        script(type='text/javascript', src='public/js/c3.min.js')
+        script(type='text/javascript', src='public/js/db.js')
 
   body
 
-    div.nav-sidebar
-      .well
-        ul#sidebar.nav.nav-list
-          li.nav-header Menu
-          li.active
-            a(href='#', nw-path='~/')
-              i.icon-white.icon-home
-              |  Home
-          li
-            a(href='#', nw-path='file:///C:/Users/e002679/src/wfo-app/views/inin_data')
-              i.icon-signal
-              |  ININ Data
-          li
-            a(href='#', nw-path='~/Pictures')
-              i.icon-book
-              |  Attendance
-          li.nav-header Info
-          li.divider
-          li
-            a(href='#', nw-call='about', onclick='App.about()')
-              i.icon-flag
-              |  Formulas
+    div.window
+      header.toolbar.toolbar-header
+        h1.title WFO App
 
-    block content
+      div.window-content
+
+        div.pane-group
+
+          div.pane.pane-sm.sidebar
+
+            div.sidebar-menu
+              nav.nav-group
+                h1.nav-group-title.text-center Menu
+
+                div.sidebar-menu-items
+                  span.nav-group-item.active
+                    span.icon.icon-home 
+                      | Home
+
+                  span.nav-group-item
+                    span.icon.icon-chart-area 
+                      | Interactions
+
+                  span.nav-group-item
+                    span.icon.icon-clock 
+                      | Attendance
+
+                  span.nav-group-item
+                    span.icon.icon-gauge 
+                      | Productivity
+
+                  span.nav-group-item
+                    span.icon.icon-trophy 
+                      | QPA
+
+          block content
