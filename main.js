@@ -1,18 +1,13 @@
-// const electron = require('electron');
-// const app = electron.app;
-// const BrowserWindow = electron.BrowserWindow;
-
 'use strict';
 
 const {app, BrowserWindow} = require('electron');
 const locals = {/* ...*/};
-const jade = require('electron-jade')({pretty: true}, locals);
+const jade = require('./lib/electron-jade')({pretty: true}, locals);
 
 require('dotenv').load();
 
 let mainWindow;
 
-// Quit when all windows are closed.
 app.on('window-all-closed', function() {
   if (process.platform != 'darwin')
     app.quit();
@@ -23,12 +18,12 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
 
   mainWindow = new BrowserWindow({
-    width: 800, 
-    height: 600
+    width: 1000, 
+    height: 800
   });
 
+  // NOTE: the URL is enclosed in backticks NOT single quotes
   mainWindow.loadURL(`file://${__dirname}/index.jade`);
-  // mainWindow.loadURL('file://' + __dirname + '/index.html');
   
   mainWindow.on('closed', function() {
     mainWindow = null;
