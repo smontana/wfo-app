@@ -8,10 +8,6 @@ html
       link(href='public/stylesheets/photon-kit/css/photon.css', rel='stylesheet')
       link(href='public/stylesheets/c3.min.css', rel='stylesheet', type='text/css')
       link(href='public/stylesheets/myStyles.css', rel='stylesheet')
-      block scripts
-        script(type='text/javascript', src='public/js/d3.min.js')
-        script(type='text/javascript', src='public/js/c3.min.js')
-        script(type='text/javascript', src='public/js/db.js')
 
   body
 
@@ -32,22 +28,32 @@ html
                 div.sidebar-menu-items
                   button.nav-group-item.btn.btn-large.btn-default.active
                     span.icon.icon-home 
-                      | Home
+                      a(use xlink:href='views/templates/index.jade')
+                        | Home
 
                   button.nav-group-item.btn.btn-large.btn-default
                     span.icon.icon-chart-area 
-                      | Interactions
+                      a(use xlink:href='views/templates/interactions.jade')
+                        | Interactions
 
                   button.nav-group-item.btn.btn-large.btn-default
                     span.icon.icon-clock 
-                      | Attendance
+                      a(use xlink:href='views/templates/attendance.jade')
+                        | Attendance
 
                   button.nav-group-item.btn.btn-large.btn-default
                     span.icon.icon-gauge 
-                      | Productivity
+                      a(use xlink:href='views/templates/productivity.jade')
+                        | Productivity
 
                   button.nav-group-item.btn.btn-large.btn-default
                     span.icon.icon-trophy 
-                      | QPA
+                      a(use xlink:href='views/templates/qpa.jade')
+                        | QPA
 
           block content
+
+    block scripts
+        script(type='text/javascript', src='public/js/d3.min.js')
+        script(type='text/javascript', src='public/js/c3.min.js')
+        script(type='text/javascript', src='public/js/db.js')

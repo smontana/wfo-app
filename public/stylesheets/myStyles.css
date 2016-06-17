@@ -1,3 +1,7 @@
+html {
+  background: url(../images/htmlbg.png) repeat;
+}
+
 .sidebar {
   background: url(../images/dark_embroidery.png) repeat;
 }
@@ -25,13 +29,13 @@
   margin-left: 1em;
 }
 
-.sidebar-menu-items span {
-  padding: 0;
+.sidebar-menu-items button {
+  width: 78%;
+  font-size: inherit;
   margin-top: 0.382em;
   margin-bottom: 0.382em;
   margin-left: 1.618em;
   margin-right: 1.618em;
-
   border-radius: 3px;
   text-shadow: 0 1px white;
   background-image: linear-gradient(to bottom, #fcfcfc, #f0f0f0);
@@ -40,14 +44,12 @@
   cursor: pointer;
 }
 
-.sidebar-menu-items button {
-  width: 78%;
-  font-size: inherit;
+.sidebar-menu-items span {
+  padding: 0;
   margin-top: 0.382em;
   margin-bottom: 0.382em;
   margin-left: 1.618em;
   margin-right: 1.618em;
-
   border-radius: 3px;
   text-shadow: 0 1px white;
   background-image: linear-gradient(to bottom, #fcfcfc, #f0f0f0);
@@ -59,6 +61,12 @@
 .sidebar-menu-items button span {
   line-height: 1;
   cursor: pointer;
+}
+
+.sidebar-menu-items button span a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
 }
 
 .row {

@@ -1,6 +1,6 @@
 var moment = require('moment');
-var config = require('./lib/db-config');
-var query_interactions = require('./lib/query-interactions');
+var config = require('./db/config');
+var query_interactions = require('./db/query_logic/query-interactions');
 
 var sql = require('seriate');
 sql.setDefaultConfig(config);

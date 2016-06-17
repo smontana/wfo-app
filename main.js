@@ -51,10 +51,6 @@ app.on('ready', function() {
   mainWindow.on('close', function() {
     mainWindowBounds = mainWindow.getBounds();
   });
-
-  mainWindow.on('closed', function() {
-    app.quit();
-  });
 });
 
 app.on('window-all-closed', function() {
