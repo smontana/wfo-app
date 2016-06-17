@@ -8,8 +8,6 @@ html
       link(href='public/stylesheets/photon-kit/css/photon.css', rel='stylesheet')
       link(href='public/stylesheets/c3.min.css', rel='stylesheet', type='text/css')
       link(href='public/stylesheets/myStyles.css', rel='stylesheet')
-      //- script(type='text/javascript', src='public/js/sidebar.js')
-      script(type='text/javascript', src='public/js/nav.js')
 
   body
 
@@ -29,34 +27,30 @@ html
 
                 div.sidebar-menu-items
 
-                  #homepage(onclick="findAndOpenMatchingSection(homepage)")
-                    button.nav-group-item.btn.btn-large.btn-default
-                      span.icon.icon-home 
-                        | Home
+                  #homepage
+                    button#homepage_.nav-group-item.btn.btn-large.btn-default.icon.icon-home 
+                      | Home
 
-                  #interactions(onclick="findAndOpenMatchingSection(interactions)")
-                    button.nav-group-item.btn.btn-large.btn-default
-                      span.icon.icon-chart-area 
-                        | Interactions
+                  #interactions
+                    button#interactions_.nav-group-item.btn.btn-large.btn-default.icon.icon-chart-area 
+                      | Interactions
 
-                  #attendance(onclick="findAndOpenMatchingSection(attendance)")
-                    button.nav-group-item.btn.btn-large.btn-default
-                      span.icon.icon-clock 
-                        | Attendance
+                  #attendance
+                    button#attendance_.nav-group-item.btn.btn-large.btn-default.icon.icon-clock 
+                      | Attendance
 
-                  #productivity(onclick="findAndOpenMatchingSection(productivity)")
-                    button.nav-group-item.btn.btn-large.btn-default
-                      span.icon.icon-gauge 
-                        | Productivity
+                  #productivity
+                    button#productivity_.nav-group-item.btn.btn-large.btn-default.icon.icon-gauge 
+                      | Productivity
 
-                  #qpa(onclick="findAndOpenMatchingSection(qpa)")
-                    button.nav-group-item.btn.btn-large.btn-default
-                      span.icon.icon-trophy 
-                        | QPA
+                  #qpa
+                    button#qpa_.nav-group-item.btn.btn-large.btn-default.icon.icon-trophy 
+                      | QPA
 
           block content
 
     block scripts
-        script(type='text/javascript', src='public/js/d3.min.js')
-        script(type='text/javascript', src='public/js/c3.min.js')
-        script(type='text/javascript', src='public/js/db.js')
+      script(type='text/javascript', src='public/js/nav.js')
+      script(type='text/javascript', src='public/js/d3.min.js')
+      script(type='text/javascript', src='public/js/c3.min.js')
+      script(type='text/javascript', src='public/js/db.js')
