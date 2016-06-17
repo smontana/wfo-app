@@ -11,7 +11,7 @@ const jade = require('./lib/electron-jade')({pretty: true}, locals);
 
 require('dotenv').load();
 
-let mainWindow;
+var mainWindow = null;
 let mainWindowBounds;
 let isQuitting = false;
 
@@ -43,8 +43,8 @@ app.on('ready', function() {
 
   page.on('dom-ready', function() {
     page.insertCSS(fs.readFileSync(path.join(__dirname+'/public/stylesheets/photon-kit/css/', 'photon.css'), 'utf8'));
-    page.insertCSS(fs.readFileSync(path.join(__dirname+'/public/stylesheets/', 'c3.min.css'), 'utf8'));
     page.insertCSS(fs.readFileSync(path.join(__dirname+'/public/stylesheets/', 'myStyles.css'), 'utf8'));
+    page.insertCSS(fs.readFileSync(path.join(__dirname+'/public/stylesheets/', 'c3.min.css'), 'utf8'));
     mainWindow.show();
   });
 
@@ -56,7 +56,7 @@ app.on('ready', function() {
 app.on('window-all-closed', function() {
   if (process.platform != 'darwin')
     app.quit();
-    console.log(mainWindowBounds);
+    // console.log(mainWindowBounds);
 });
 
 app.on('before-quit', function() {

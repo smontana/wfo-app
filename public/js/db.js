@@ -70,6 +70,9 @@ function build_homepage_calls_ans_vs_off_graph(data) {
       y: {
         show: true
       }
+    },
+    zoom: {
+      enabled: true
     }
   });
 }
@@ -118,6 +121,9 @@ function build_homepage_calls_abd_flow_tran_graph(data) {
   var chart = c3.generate({
     bindto: "#homepage-second-report",
     data: {
+      selection: {
+        enabled: true 
+      },
       x: 'x',
       columns: [
         dates,
@@ -148,6 +154,9 @@ function build_homepage_calls_abd_flow_tran_graph(data) {
       y: {
         show: true
       }
+    },
+    zoom: {
+      enabled: true
     }
   });
 }
@@ -158,10 +167,10 @@ window.onload = function() {
   sql.execute( {
     query: query_interactions.call_metrics_by_solution_by_week
   }).then( function( data ) {
-    console.log(data);
+    // console.log(data);
     build_homepage_calls_ans_vs_off_graph(data);
     build_homepage_calls_abd_flow_tran_graph(data);
-    console.log(location);
+    // console.log(location);
 
   }, function( err ) {
     console.log( err );

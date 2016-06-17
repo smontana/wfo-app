@@ -8,6 +8,8 @@ html
       link(href='public/stylesheets/photon-kit/css/photon.css', rel='stylesheet')
       link(href='public/stylesheets/c3.min.css', rel='stylesheet', type='text/css')
       link(href='public/stylesheets/myStyles.css', rel='stylesheet')
+      //- script(type='text/javascript', src='public/js/sidebar.js')
+      script(type='text/javascript', src='public/js/nav.js')
 
   body
 
@@ -26,29 +28,30 @@ html
                 h1.nav-group-title.text-center Menu
 
                 div.sidebar-menu-items
-                  button.nav-group-item.btn.btn-large.btn-default.active
-                    span.icon.icon-home 
-                      a(use xlink:href='views/templates/index.jade')
+
+                  #homepage(onclick="findAndOpenMatchingSection(homepage)")
+                    button.nav-group-item.btn.btn-large.btn-default
+                      span.icon.icon-home 
                         | Home
 
-                  button.nav-group-item.btn.btn-large.btn-default
-                    span.icon.icon-chart-area 
-                      a(use xlink:href='views/templates/interactions.jade')
+                  #interactions(onclick="findAndOpenMatchingSection(interactions)")
+                    button.nav-group-item.btn.btn-large.btn-default
+                      span.icon.icon-chart-area 
                         | Interactions
 
-                  button.nav-group-item.btn.btn-large.btn-default
-                    span.icon.icon-clock 
-                      a(use xlink:href='views/templates/attendance.jade')
+                  #attendance(onclick="findAndOpenMatchingSection(attendance)")
+                    button.nav-group-item.btn.btn-large.btn-default
+                      span.icon.icon-clock 
                         | Attendance
 
-                  button.nav-group-item.btn.btn-large.btn-default
-                    span.icon.icon-gauge 
-                      a(use xlink:href='views/templates/productivity.jade')
+                  #productivity(onclick="findAndOpenMatchingSection(productivity)")
+                    button.nav-group-item.btn.btn-large.btn-default
+                      span.icon.icon-gauge 
                         | Productivity
 
-                  button.nav-group-item.btn.btn-large.btn-default
-                    span.icon.icon-trophy 
-                      a(use xlink:href='views/templates/qpa.jade')
+                  #qpa(onclick="findAndOpenMatchingSection(qpa)")
+                    button.nav-group-item.btn.btn-large.btn-default
+                      span.icon.icon-trophy 
                         | QPA
 
           block content

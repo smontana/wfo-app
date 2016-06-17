@@ -7,20 +7,28 @@ block content
 
   div.pane
 
-    div.row
+    div.container
 
-      div.report
+      section#homepage_sec.app-section
 
-      .homepage-graph-rows
+        .homepage-graph-rows
 
-        .row.homepage-first-row
+          h1.text-center TEST!!!
 
-          #homepage-first-report
+      section#attendance_sec.app-section
+      section#interactions_sec.app-section
 
-        .row.homepage-second-row
+        .homepage-graph-rows
 
-          #homepage-second-report
+          .row.homepage-first-row
 
-      ul.body-area-bottom
+            #homepage-first-report
+
+          .row.homepage-second-row
+
+            #homepage-second-report
+
+      section#productivity_sec.app-section
+      section#qpa_sec.app-section
 
   //- include ./views/footer.jade

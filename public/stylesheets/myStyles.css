@@ -2,6 +2,21 @@ html {
   background: url(../images/htmlbg.png) repeat;
 }
 
+.is-shown {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
+  transition: visibility 0s 0s linear , opacity .36s ease-out, transform .36s ease-out;
+}
+
+.is-selected {
+
+}
+
+/*
+ * -- SECTION: sidebar
+ */
+
 .sidebar {
   background: url(../images/dark_embroidery.png) repeat;
 }
@@ -63,17 +78,71 @@ html {
   cursor: pointer;
 }
 
-.sidebar-menu-items button span a {
-  cursor: pointer;
-  text-decoration: none;
-  color: #333;
-}
-
-.row {
+.container{
   padding: 2em;
   margin-right: 1em;
 }
 
-.report {
+/*
+ * -- SECTION: homepage
+ */
 
+section#homepage_sec {
+  visibility: hidden;
+}
+
+section#homepage_sec.is-shown {
+  visibility: visible;
+}
+
+.homepage-graph-rows * {
+  cursor: crosshair;
+}
+
+/*
+ * -- SECTION: attendance
+ */
+
+section#attendance_sec {
+  visibility: hidden;
+}
+
+section#attendance_sec.is-shown {
+  visibility: visible;
+}
+
+/*
+ * -- SECTION: interactions
+ */
+
+section#interactions_sec {
+  visibility: hidden;
+}
+
+section#interactions_sec.is-shown {
+  visibility: visible;
+}
+
+/*
+ * -- SECTION: productivity
+ */
+
+section#productivity_sec {
+  visibility: hidden;
+}
+
+section#productivity_sec.is-shown {
+  visibility: visible;
+}
+
+/*
+ * -- SECTION: qpa
+ */
+
+section#qpa_sec {
+  visibility: hidden;
+}
+
+section#qpa_sec.is-shown {
+  visibility: visible;
 }
