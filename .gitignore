@@ -1,3 +1,4 @@
 node_modules
 .env
 OLD_db.js
+npm-debug.log
