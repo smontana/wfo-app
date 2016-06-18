@@ -7,28 +7,32 @@ block content
 
   div.pane
 
-    div.container
+    section#homepage_sec.app-section
+      .page-rows
+        h1.text-center HOMEPAGE
 
-      section#homepage_sec.app-section
-        .page-rows
-          h1.text-center HOMEPAGE
+    section#attendance_sec.app-section
+      .page-rows
+        h1.text-center ATTENDANCE
 
-      section#attendance_sec.app-section
-        .page-rows
-          h1.text-center ATTENDANCE
+    section#interactions_sec.app-section
+      .page-rows
+        h1.text-center INTERACTIONS
 
-      section#interactions_sec.app-section
-        .page-rows
-          h1.text-center INTERACTIONS
-          .row.homepage-first-row
-            #homepage-first-report
-          .row.homepage-second-row
-            #homepage-second-report
+        .row.homepage-first-row
+          .card
+            .content
+              #homepage-first-report
 
-      section#productivity_sec.app-section
-        .page-rows
-          h1.text-center PRODUCTIVITY
+        .row.homepage-second-row
+          .card
+            .content
+              #homepage-second-report
 
-      section#qpa_sec.app-section
-        .page-rows
-          h1.text-center QPA
+    section#productivity_sec.app-section
+      .page-rows
+        h1.text-center PRODUCTIVITY
+
+    section#qpa_sec.app-section
+      .page-rows
+        h1.text-center QPA
