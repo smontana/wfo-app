@@ -4,7 +4,6 @@ html {
 
 .container section {
   padding: 2em;
-  /*margin-right: 1em;*/
 }
 
 .app-section {
@@ -15,7 +14,6 @@ html {
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  color: var(--color-accent);
 
   /* Hide */
   pointer-events: none;
@@ -32,6 +30,10 @@ html {
   transform: translateX(0);
   transition: visibility 0s 0s linear , opacity .36s ease-out, transform .36s ease-out;
 }
+
+/*.app-section.is-shown .c3 path, .c3 line {
+  stroke: #000 !important;
+}*/
 
 /*
  * -- SECTION: sidebar

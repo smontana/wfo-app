@@ -42,9 +42,9 @@ app.on('ready', function() {
   const page = mainWindow.webContents;
 
   page.on('dom-ready', function() {
+    page.insertCSS(fs.readFileSync(path.join(__dirname+'/public/stylesheets/', 'c3.min.css'), 'utf8'));
     page.insertCSS(fs.readFileSync(path.join(__dirname+'/public/stylesheets/photon-kit/css/', 'photon.css'), 'utf8'));
     page.insertCSS(fs.readFileSync(path.join(__dirname+'/public/stylesheets/', 'myStyles.css'), 'utf8'));
-    page.insertCSS(fs.readFileSync(path.join(__dirname+'/public/stylesheets/', 'c3.min.css'), 'utf8'));
     mainWindow.show();
   });
 

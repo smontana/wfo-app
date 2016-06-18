@@ -38,9 +38,15 @@ function build_homepage_calls_ans_vs_off_graph(data) {
   dates.unshift('x');
 
   // ---------------------------
-  
+  // "oninit" allows func run | maybe check css with it for border issue?
   var chart = c3.generate({
     bindto: "#homepage-first-report",
+    padding: {
+      top: 10,
+      right: 50,
+      bottom: 10,
+      left: 70
+    },
     data: {
       x: 'x',
       columns: [
@@ -59,7 +65,8 @@ function build_homepage_calls_ans_vs_off_graph(data) {
         type: 'timeseries',
         tick: {
           format: '%m-%d-%y',
-          fit: true
+          fit: true,
+          outer: false
         }
       }
     },
@@ -120,6 +127,12 @@ function build_homepage_calls_abd_flow_tran_graph(data) {
   
   var chart = c3.generate({
     bindto: "#homepage-second-report",
+    padding: {
+      top: 10,
+      right: 50,
+      bottom: 10,
+      left: 70
+    },
     data: {
       selection: {
         enabled: true 
@@ -143,7 +156,8 @@ function build_homepage_calls_abd_flow_tran_graph(data) {
         type: 'timeseries',
         tick: {
           format: '%m-%d-%y',
-          fit: true
+          fit: true,
+          outer: false
         }
       }
     },

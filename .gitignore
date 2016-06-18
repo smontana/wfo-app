@@ -1,4 +1,4 @@
 node_modules
 .env
-OLD_db.js
+app/*
 npm-debug.log
