@@ -1,4 +1,7 @@
 const storage = require('electron-json-storage')
+global.sharedObj = {
+  active_section: null
+};
 
 // Default to the view that was active the last time the app was open
 storage.get('activeSectionButtonId', function (err, id) {
@@ -29,6 +32,7 @@ function handleSectionTrigger(event, open_section_id) {
   const section_id = event.target.getAttribute('id') + 'sec'
 
   console.log(section_id)
+  global.sharedObj.active_section = section_id;
 
   document.getElementById(section_id).classList.add('is-shown')
 
