@@ -1,0 +1,70 @@
+mixin add_qpa(title)
+
+  section#qpa_sec.app-section
+    .page-rows
+      h1.text-center= title
+
+      button#print-pdf.print-qpa-page Print PDF
+      span#pdf-path
+
+      span.vert-space
+
+      a.hint--top.hint--always(aria-label="Year-to-Date QPA Averages by Solution")
+
+      .row.qpa-first-row.flexbox-container
+
+        .qpa.gauge-row-flexbox
+
+          .qpa-card
+            .content
+              h3.text-center.gauge-title
+                = 'CD'
+              #cd_qpa_yr_avg_gauge
+
+          .qpa-card
+            .content
+              h3.text-center.gauge-title
+                = 'CRM'
+              #crm_qpa_yr_avg_gauge
+
+          .qpa-card
+            .content
+              h3.text-center.gauge-title
+                = 'CSO (Billing)'
+              #cso_qpa_yr_avg_gauge
+
+          .qpa-card
+            .content
+              h3.text-center.gauge-title
+                = 'DMS'
+              #dms_qpa_yr_avg_gauge
+
+          .qpa-card
+            .content
+              h3.text-center.gauge-title
+                = 'F&I'
+              #fi_qpa_yr_avg_gauge
+
+          .qpa-card
+            .content
+              h3.text-center.gauge-title
+                = 'RTS'
+              #rts_qpa_yr_avg_gauge
+
+      script.
+        require('./renderer-process/qpa/pdf')
+        var config = require('./main-process/db/config')
+        var sql = require('seriate')
+        sql.setDefaultConfig(config)
+
+        var query_qpa = require('./main-process/db/queries/qpa_queries.js')
+        var yearly_qpa_avgs = require('./main-process/db/graph_builders/qpa/qpa_ytd_solution_avg_gauges.js');
+
+        window.onload = sql.execute({
+          query: query_qpa.get_QPA_solution_avg_by_yr
+        }).then(function(data) {
+          console.log(data);
+          yearly_qpa_avgs.build_solution_yearly_avg_graphs(data)
+        }, function(err) {
+          console.log(err);
+        });

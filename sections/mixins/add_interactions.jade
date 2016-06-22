@@ -1,0 +1,34 @@
+mixin add_interactions(title)
+
+  section#interactions_sec.app-section
+    .page-rows
+      h1.text-center= title
+      span.vert-space
+
+      .row.interactions-first-row
+        .card.interaction-card
+          .content
+            #interactions-first-report
+
+      .row.interactions-second-row
+        .card.interaction-card
+          .content
+            #interactions-second-report
+
+    script.
+      var config = require('./main-process/db/config')
+      var sql = require('seriate')
+      sql.setDefaultConfig(config)
+
+      var query_interactions = require('./main-process/db/queries/interaction_queries.js')
+      var sfi_interactions_js = require('./main-process/db/graph_builders/interactions/interactions_sfi.js')
+
+      window.onload = sql.execute({
+        query: query_interactions.call_metrics_by_solution_by_week
+      }).then(function(data) {
+        console.log(data);
+        sfi_interactions_js.build_homepage_calls_ans_vs_off_graph(data)
+        sfi_interactions_js.build_homepage_calls_abd_flow_tran_graph(data)
+      }, function(err) {
+        console.log(err);
+      });

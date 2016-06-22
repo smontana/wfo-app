@@ -1,0 +1,133 @@
+mixin add_attendance(title)
+
+  section#attendance_sec.app-section
+    .page-rows
+      h1.text-center= title
+      span.vert-space
+
+      .row.attendance-first-row.flexbox-container
+
+        .gauge-row-flexbox
+          span.hint--always(aria-label="Sales and F&I")
+          //- F&I
+          .attendance-card
+            .content
+              h3.text-center.gauge-title
+                = 'Absent Count | 2016 YTD'
+              #attendance_sfi_abs_cnt_gauge
+
+          .attendance-card
+            .content
+              h3.text-center.gauge-title
+                = 'Late Count | 2016 YTD'
+              #attendance_sfi_late_cnt_gauge
+
+          .attendance-card
+            .content
+              h3.text-center.gauge-title
+                = 'Left-Early Count | 2016 YTD'
+              #attendance_sfi_early_cnt_gauge
+
+      .row.attendance-second-row.flexbox-container
+
+        .gauge-row-flexbox
+          span.hint--always(aria-label="DMS")
+          //- DMS
+          .attendance-card
+            .content
+              h3.text-center.gauge-title
+                = 'Absent Count | 2016 YTD'
+              #attendance_dms_abs_cnt_gauge
+
+          .attendance-card
+            .content
+              h3.text-center.gauge-title
+                = 'Late Count | 2016 YTD'
+              #attendance_dms_late_cnt_gauge
+
+          .attendance-card
+            .content
+              h3.text-center.gauge-title
+                = 'Left-Early Count | 2016 YTD'
+              #attendance_dms_early_cnt_gauge
+
+      .row.attendance-third-row.flexbox-container
+
+        .gauge-row-flexbox
+          span.hint--always(aria-label="RTS")
+          //- RTS
+          .attendance-card
+            .content
+              h3.text-center.gauge-title
+                = 'Absent Count | 2016 YTD'
+              #attendance_rts_abs_cnt_gauge
+
+          .attendance-card
+            .content
+              h3.text-center.gauge-title
+                = 'Late Count | 2016 YTD'
+              #attendance_rts_late_cnt_gauge
+
+          .attendance-card
+            .content
+              h3.text-center.gauge-title
+                = 'Left-Early Count | 2016 YTD'
+              #attendance_rts_early_cnt_gauge
+
+      .row.attendance-fourth-row.flexbox-container
+
+        .gauge-row-flexbox
+          span.hint--always(aria-label="CRM")
+          //- RTS
+          .attendance-card
+            .content
+              h3.text-center.gauge-title
+                = 'Absent Count | 2016 YTD'
+              #attendance_crm_abs_cnt_gauge
+
+          .attendance-card
+            .content
+              h3.text-center.gauge-title
+                = 'Late Count | 2016 YTD'
+              #attendance_crm_late_cnt_gauge
+
+          .attendance-card
+            .content
+              h3.text-center.gauge-title
+                = 'Left-Early Count | 2016 YTD'
+              #attendance_crm_early_cnt_gauge
+
+    script.
+      var config = require('./main-process/db/config')
+      var sql = require('seriate')
+      sql.setDefaultConfig(config)
+      var query_attendance = require('./main-process/db/queries/attendance_queries.js')
+      var sfi_attendance_js = require('./main-process/db/graph_builders/attendance/attendance_sfi.js')
+      var dms_attendance_js = require('./main-process/db/graph_builders/attendance/attendance_dms.js')
+      var rts_attendance_js = require('./main-process/db/graph_builders/attendance/attendance_rts.js')
+      var crm_attendance_js = require('./main-process/db/graph_builders/attendance/attendance_crm.js')
+
+      window.onload = sql.execute({
+        query: query_attendance.get_attendance_solution_counts_by_yr
+      }).then(function(data) {
+        console.log(data);
+
+        sfi_attendance_js.build_solution_absence_counts_by_yr_graph(data)
+        sfi_attendance_js.build_solution_late_counts_by_yr_graph(data)
+        sfi_attendance_js.build_solution_early_counts_by_yr_graph(data)
+
+        dms_attendance_js.build_solution_absence_counts_by_yr_graph(data)
+        dms_attendance_js.build_solution_late_counts_by_yr_graph(data)
+        dms_attendance_js.build_solution_early_counts_by_yr_graph(data)
+
+        rts_attendance_js.build_solution_absence_counts_by_yr_graph(data)
+        rts_attendance_js.build_solution_late_counts_by_yr_graph(data)
+        rts_attendance_js.build_solution_early_counts_by_yr_graph(data)
+
+        crm_attendance_js.build_solution_absence_counts_by_yr_graph(data)
+        crm_attendance_js.build_solution_late_counts_by_yr_graph(data)
+        crm_attendance_js.build_solution_early_counts_by_yr_graph(data)
+
+      }, function(err) {
+        console.log(err);
+      });

@@ -35,7 +35,7 @@ var sfi_interactions_js = {
     // ---------------------------
     // "oninit" allows func run | maybe check css with it for border issue?
     var chart = c3.generate({
-      bindto: "#homepage-first-report",
+      bindto: "#interactions-first-report",
       padding: {
         top: 10,
         right: 50,
@@ -119,7 +119,7 @@ var sfi_interactions_js = {
     // ---------------------------
     
     var chart = c3.generate({
-      bindto: "#homepage-second-report",
+      bindto: "#interactions-second-report",
       padding: {
         top: 10,
         right: 50,
