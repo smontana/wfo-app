@@ -1,6 +1,6 @@
 'use strict';
 const path = require('path');
-const fs = require('fs');
+const glob = require('glob')
 const electron = require('electron');
 const app = electron.app;
 const config = require('./lib/config');
@@ -14,6 +14,8 @@ require('dotenv').load();
 var mainWindow = null;
 let mainWindowBounds;
 let isQuitting = false;
+
+load_main_proc()
 
 function createMainWindow() {
   const lastWindowState = config.get('lastWindowState');
@@ -42,9 +44,6 @@ app.on('ready', function() {
   const page = mainWindow.webContents;
 
   page.on('dom-ready', function() {
-    // page.insertCSS(fs.readFileSync(path.join(__dirname+'/public/stylesheets/', 'myStyles.css'), 'utf8'));
-    // page.insertCSS(fs.readFileSync(path.join(__dirname+'/public/stylesheets/', 'c3.min.css'), 'utf8'));
-    // page.insertCSS(fs.readFileSync(path.join(__dirname+'/public/stylesheets/photon-kit/css/', 'photon.css'), 'utf8'));
     mainWindow.show();
   });
 
@@ -68,3 +67,11 @@ app.on('before-quit', function() {
     y: mainWindowBounds.y
   });
 });
+
+// Require each JS file in the main-process dir
+function load_main_proc () {
+  var files = glob.sync(path.join(__dirname, 'main-process/**/*.js'))
+  files.forEach(function (file) {
+    require(file)
+  })
+}

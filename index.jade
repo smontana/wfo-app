@@ -226,6 +226,10 @@ block content
     section#qpa_sec.app-section
       .page-rows
         h1 QPA
+
+        button#print-pdf.print-qpa-page Print PDF
+        span#pdf-path
+
         span.vert-space
         a.hint--top.hint--always(aria-label="Year-to-Date QPA Averages by Solution")
 
@@ -270,6 +274,7 @@ block content
                 #rts_qpa_yr_avg_gauge
 
         script.
+          require('./renderer-process/qpa/pdf')
           var config = require('./db/config')
           var sql = require('seriate')
           sql.setDefaultConfig(config)
