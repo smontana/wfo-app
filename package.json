@@ -19,6 +19,7 @@
     "seriate": "^0.7.1"
   },
   "devDependencies": {
+    "devtron": "^1.2.1",
     "gulp": "^3.9.1",
     "gulp-jade": "^1.1.0",
     "gulp-livereload": "^3.8.1"

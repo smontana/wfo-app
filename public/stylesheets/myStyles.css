@@ -206,6 +206,10 @@ body,
   transition: all 0.2s ease-in-out;
 }
 
+.attendance-card .content {
+  overflow-x: hidden;
+}
+
 .attendance-card:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   transform: scale(1.02);
@@ -232,3 +236,82 @@ body,
  * -- SECTION: qpa
  */
 
+#qpa_sec.app-section {
+  /*display:flex;
+  justify-content:center;
+  align-items:center;*/
+  text-align: center;
+}
+
+span.vert-space {
+  display: block;
+  /*width: 75%;*/
+  margin-top: 0.3em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+
+.page-rows a.hint--top.hint--always {
+  margin-top: 3em;
+}
+
+.row.qpa-first-row.flexbox-container,
+.row.qpa-second-row.flexbox-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.qpa.gauge-row-flexbox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 100%;
+  padding: 1.619em;
+  justify-content: center;
+}
+
+.qpa-card {
+  max-height: 10em;
+  max-width: 10em;
+  height: 10%;
+  width: 16.812%;
+  justify-content: center;
+  vertical-align: middle;
+  background: #fff;
+  display: block;
+  position: relative;
+  margin-bottom: 1em;
+  margin-left: 3px;
+  margin-right: 3px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.2s ease-in-out;
+}
+
+.qpa-card .content {
+  overflow-x: hidden;
+}
+
+.qpa-card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transform: scale(1.02);
+}
+
+.qpa-card .gauge-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 13px;
+  color:rgba(0,0,0,.6);
+  font-weight: bold;
+  font-family: "Myriad Set Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+.qpa-card text.c3-gauge-value {
+  font-size: 13px !important;
+  font-weight: bold;
+}
