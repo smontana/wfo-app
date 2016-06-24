@@ -1,19 +1,15 @@
-mixin add_qpa(title)
+mixin get_ytd_qpa_solution_report(placeholder)
 
-  section#qpa_sec.app-section
+  section#qpa_ytd_solution_sec.app-section
     .page-rows
-      h1.text-center= title
-
-      button#print-pdf.print-qpa-page Print PDF
-      span#pdf-path
-
+      h1.text-center QPA
       span.vert-space
 
       a.hint--top.hint--always(aria-label="Year-to-Date QPA Averages by Solution")
 
       .row.qpa-first-row.flexbox-container
 
-        .qpa.gauge-row-flexbox
+        .gauge-row-flexbox
 
           .qpa-card
             .content

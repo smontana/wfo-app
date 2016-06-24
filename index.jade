@@ -1,10 +1,11 @@
 extends ./views/layout.jade
 
-include ./sections/mixins/add_homepage
-include ./sections/mixins/add_interactions
-include ./sections/mixins/add_attendance
-include ./sections/mixins/add_productivity
-include ./sections/mixins/add_qpa
+include ./sections/mixins/landing_pages/add_homepage
+include ./sections/mixins/landing_pages/add_interactions
+include ./sections/mixins/landing_pages/add_attendance
+include ./sections/mixins/landing_pages/add_productivity
+include ./sections/mixins/landing_pages/add_qpa
+include ./sections/mixins/qpa_mixins/get_ytd_solution_report
 
 block title
   title WFO Data Viewer
@@ -18,3 +19,4 @@ append content
     +add_attendance('ATTENDANCE')
     +add_productivity('PRODUCTIVITY')
     +add_qpa('QPA')
+    +get_ytd_qpa_solution_report('placeholder')
