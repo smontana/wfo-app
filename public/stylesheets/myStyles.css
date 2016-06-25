@@ -272,11 +272,8 @@ span.vert-space {
 }
 
 .qpa-ytd-reports-selection {
-  /*border: 1px solid black;
-  border-radius: 4px;*/
-}
 
-/*---*/
+}
 
 .qpa-card-group {
   display: flex;
@@ -315,15 +312,9 @@ span.vert-space {
   border-radius: 0;
 }
 
-/*.qpa-card-group-card + .qpa-card-group-card {
-  border-left: 1px solid #D7DBDD;
-}*/
-
 .qpa-card-group-card-description {
   flex: 1 1 auto;
 }
-
-/*---*/
 
 .animate-button {
   transition: all 0.1s;
@@ -334,6 +325,35 @@ span.vert-space {
   transform: translate(0px,5px);
   -webkit-transform: translate(0px,5px);
 }
+
+.qpa-big-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 75%;
+  border: 1px solid black;
+  border-radius: 4px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 0.319em;
+  padding-right: 1.319em;
+  background: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.col-spacer {
+  padding-top: 1em;
+}
+
+.qpa-timeseries-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
 
 /*---------------------------------------------*/
 /*---QPA PDF BUTTON---*/
@@ -367,7 +387,7 @@ span.vert-space {
 }
 
 .page-rows a.hint--top.hint--always {
-  margin-top: 5em;
+  margin-top: 4em;
 }
 
 .row.qpa-first-row.flexbox-container,
@@ -385,7 +405,9 @@ span.vert-space {
   flex-wrap: nowrap;
   width: 100%;
   height: 100%;
-  padding: 1.619em;
+  padding-left: 1.619em;
+  padding-right: 1.619em;
+  padding-bottom: 1.619em;
   align-items: center;
   justify-content: center;
 }
@@ -412,10 +434,10 @@ span.vert-space {
   overflow-x: hidden;
 }
 
-.qpa-card:hover {
+/*.qpa-card:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   transform: scale(1.02);
-}
+}*/
 
 .qpa-card .gauge-title {
   margin-top: 0;

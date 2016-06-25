@@ -110,7 +110,7 @@ mixin add_attendance(title)
       window.onload = sql.execute({
         query: query_attendance.get_attendance_solution_counts_by_yr
       }).then(function(data) {
-        console.log(data);
+        //- console.log(data);
 
         sfi_attendance_js.build_solution_absence_counts_by_yr_graph(data)
         sfi_attendance_js.build_solution_late_counts_by_yr_graph(data)
