@@ -17,6 +17,7 @@ var qpa_all_solutions_month_over_month_timeseries = {
     });
 
     var uniq_dates = _.uniq(get_dates);
+    uniq_dates.unshift('x');
 
     cd_qpa_avg = _.map(cd_stats, function(stats) {
       return stats.qpa_avg.toFixed(2)
@@ -47,10 +48,6 @@ var qpa_all_solutions_month_over_month_timeseries = {
       return stats.qpa_avg.toFixed(2)
     })
     rts_qpa_avg.unshift('rts_qpa_avg');
-
-    uniq_dates.unshift('x');
-
-    console.log(uniq_dates);
 
     var chart = c3.generate({
       bindto: "#qpa_all_solutions_month_over_month_avgs",
@@ -124,6 +121,7 @@ var qpa_all_solutions_month_over_month_timeseries = {
     });
 
     var uniq_dates = _.uniq(get_dates);
+    uniq_dates.unshift('x');
 
     cd_qpa_count = _.map(cd_stats, function(stats) {
       return stats.qpa_count
@@ -154,10 +152,6 @@ var qpa_all_solutions_month_over_month_timeseries = {
       return stats.qpa_count
     })
     rts_qpa_count.unshift('rts_qpa_count');
-
-    uniq_dates.unshift('x');
-
-    console.log(uniq_dates);
 
     var chart = c3.generate({
       bindto: "#qpa_all_solutions_month_over_month_cnts",
