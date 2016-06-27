@@ -95,9 +95,9 @@ var qpa_solution_custom_range_avgs = {
           ['CD QPA AVG', CD_qpa_avg]
         ],
         type: 'gauge',
-        onclick: function (d, i) { console.log("onclick", d, i); },
-        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+        onclick: function (d, i) { console.log("onclick", d, i); }
+        // onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+        // onmouseout: function (d, i) { console.log("onmouseout", d, i); }
       },
       gauge: {
         width: 20 // for adjusting arc thickness
@@ -125,9 +125,9 @@ var qpa_solution_custom_range_avgs = {
           ['CRM QPA AVG', CRM_qpa_avg]
         ],
         type: 'gauge',
-        onclick: function (d, i) { console.log("onclick", d, i); },
-        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+        onclick: function (d, i) { console.log("onclick", d, i); }
+        // onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+        // onmouseout: function (d, i) { console.log("onmouseout", d, i); }
       },
       gauge: {
         width: 20 // for adjusting arc thickness
@@ -155,9 +155,9 @@ var qpa_solution_custom_range_avgs = {
           ['CSO QPA AVG', CSO_qpa_avg]
         ],
         type: 'gauge',
-        onclick: function (d, i) { console.log("onclick", d, i); },
-        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+        onclick: function (d, i) { console.log("onclick", d, i); }
+        // onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+        // onmouseout: function (d, i) { console.log("onmouseout", d, i); }
       },
       gauge: {
         width: 20 // for adjusting arc thickness
@@ -185,9 +185,9 @@ var qpa_solution_custom_range_avgs = {
           ['DMS QPA AVG', DMS_qpa_avg]
         ],
         type: 'gauge',
-        onclick: function (d, i) { console.log("onclick", d, i); },
-        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+        onclick: function (d, i) { console.log("onclick", d, i); }
+        // onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+        // onmouseout: function (d, i) { console.log("onmouseout", d, i); }
       },
       gauge: {
         width: 20 // for adjusting arc thickness
@@ -215,9 +215,9 @@ var qpa_solution_custom_range_avgs = {
           ['F&I QPA AVG', FI_qpa_avg]
         ],
         type: 'gauge',
-        onclick: function (d, i) { console.log("onclick", d, i); },
-        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+        onclick: function (d, i) { console.log("onclick", d, i); }
+        // onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+        // onmouseout: function (d, i) { console.log("onmouseout", d, i); }
       },
       gauge: {
         width: 20 // for adjusting arc thickness
@@ -245,9 +245,9 @@ var qpa_solution_custom_range_avgs = {
           ['RTS QPA AVG', RTS_qpa_avg]
         ],
         type: 'gauge',
-        onclick: function (d, i) { console.log("onclick", d, i); },
-        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+        onclick: function (d, i) { console.log("onclick", d, i); }
+        // onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+        // onmouseout: function (d, i) { console.log("onmouseout", d, i); }
       },
       gauge: {
         width: 20 // for adjusting arc thickness

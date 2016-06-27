@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "devtron": "^1.2.1",
+    "electron-prebuilt": "1.2.5",
     "gulp": "^3.9.1",
     "gulp-jade": "^1.1.0",
     "gulp-livereload": "^3.8.1"

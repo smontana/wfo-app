@@ -26,7 +26,7 @@ function createMainWindow() {
     y: lastWindowState.y,
     width: lastWindowState.width,
     height: lastWindowState.height,
-    minWidth: 900,
+    minWidth: 1020,
     minHeight: 795,
     titleBarStyle: 'hidden-inset',
     autoHideMenuBar: true

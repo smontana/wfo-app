@@ -125,7 +125,6 @@
   -webkit-box-shadow: inset 0 0 0 1px #fafafa;
   cursor: pointer;
 }*/
-/*---------------------------------------------*/
 
 /*---------------------------------------------*/
 /*---QPA YTD REPORTS---*/
@@ -193,9 +192,25 @@
   font-family: "Myriad Set Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
 }
 
-.qpa-card text.c3-gauge-value {
-  font-size: 12px !important;
-  font-weight: bold;
+@media (max-width:800px) and (min-width:300px) {
+  .qpa-card text.c3-gauge-value {
+    font-size: 5px !important;
+    font-weight: bold;
+  }
+}
+
+@media (max-width:1025px) and (min-width:801px) {
+  .qpa-card text.c3-gauge-value {
+    font-size: 9px !important;
+    font-weight: bold;
+  }
+}
+
+@media (max-width:4000px) and (min-width:1026px) {
+  .qpa-card text.c3-gauge-value {
+    font-size: 12px !important;
+    font-weight: bold;
+  }
 }
 
 /*---------------------------------------------*/
@@ -266,4 +281,32 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
+  visibility: hidden;
+}
+
+.custom-date-report-options {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  text-align: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2em;
+}
+
+.custom-date-report-options button {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.is-visible {
+  visibility: visible;
+  transition: all 0.2s ease-in-out;
+}
+
+.is-not-visible {
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
 }

@@ -23,49 +23,71 @@ mixin get_qpa_custom_dates_solution_report(placeholder)
             button#qpa_solution_cutom_dates_form_submit.btn.btn-large.btn-primary(type="submit")
               | Submit
 
+          span.vert-space
+
       .qpa-custom-dates-solution-report
-          .gauge-row-flexbox
+        .custom-date-report-options
+          button#qpa_custom_go_back.btn.btn-large.btn-default.animate-button Back
+          button#qpa_print_pdf.btn.btn-large.btn-default.animate-button PDF
+          span#pdf-path
 
-            .qpa-card
-              .content
-                h3.text-center.gauge-title
-                  = 'CD'
-                #cd_qpa_custom_range_avg_gauge
+        .gauge-row-flexbox
 
-            .qpa-card
-              .content
-                h3.text-center.gauge-title
-                  = 'CRM'
-                #crm_qpa_custom_range_avg_gauge
+          .qpa-card
+            .content
+              h3.text-center.gauge-title
+                = 'CD'
+              #cd_qpa_custom_range_avg_gauge
 
-            .qpa-card
-              .content
-                h3.text-center.gauge-title
-                  = 'CSO (Billing)'
-                #cso_qpa_custom_range_avg_gauge
+          .qpa-card
+            .content
+              h3.text-center.gauge-title
+                = 'CRM'
+              #crm_qpa_custom_range_avg_gauge
 
-            .qpa-card
-              .content
-                h3.text-center.gauge-title
-                  = 'DMS'
-                #dms_qpa_custom_range_avg_gauge
+          .qpa-card
+            .content
+              h3.text-center.gauge-title
+                = 'CSO (Billing)'
+              #cso_qpa_custom_range_avg_gauge
 
-            .qpa-card
-              .content
-                h3.text-center.gauge-title
-                  = 'F&I'
-                #fi_qpa_custom_range_avg_gauge
+          .qpa-card
+            .content
+              h3.text-center.gauge-title
+                = 'DMS'
+              #dms_qpa_custom_range_avg_gauge
 
-            .qpa-card
-              .content
-                h3.text-center.gauge-title
-                  = 'RTS'
-                #rts_qpa_custom_range_avg_gauge
+          .qpa-card
+            .content
+              h3.text-center.gauge-title
+                = 'F&I'
+              #fi_qpa_custom_range_avg_gauge
+
+          .qpa-card
+            .content
+              h3.text-center.gauge-title
+                = 'RTS'
+              #rts_qpa_custom_range_avg_gauge
 
     script.
+      require('./renderer-process/qpa/pdf')
       window.$ = window.jQuery = require('jquery');
       var query_qpa = require('./main-process/db/queries/qpa_queries.js');
       var custom_qpa_solution_avg_graphs = require('./main-process/db/graph_builders/qpa/qpa_all_solutions_custom_range_graphs.js');
+
+      function show_custom_qpa_solution_report(query) {
+        var config = require('./main-process/db/config');
+        var sql = require('seriate');
+        sql.setDefaultConfig(config);
+
+        sql.execute({
+          query: query
+        }).then(function(data) {
+          custom_qpa_solution_avg_graphs.build_custom_range_solution_avgs_graphs(data)
+        }, function(err) {
+          console.log(err);
+        });
+      }
 
       $(document).ready(function(event){
 
@@ -79,31 +101,18 @@ mixin get_qpa_custom_dates_solution_report(placeholder)
 
         $('form').submit(function (e) {
           e.preventDefault();
-          console.log('e :' + e);
 
           var start_date_value = document.forms.qpa_solution_pick_custom_dates_form.elements.qpa_solution_start_date_input.value;
           var end_date_value = document.forms.qpa_solution_pick_custom_dates_form.elements.qpa_solution_end_date_input.value;
           var constructed_query = query_qpa.get_overall_QPA_solution_avg_between_dates + ' ' + "'" + start_date_value + "'" + ', ' + "'" + end_date_value + "'";
 
-          console.log('StartDate: ' + start_date_value);
-          console.log('EndDate: ' + end_date_value);
-          console.log('ConstructedQuery: ' + constructed_query);
-
-          show_custom_qpa_solution_report(constructed_query)
+          show_custom_qpa_solution_report(constructed_query);
+          $('.qpa-date-selection-container').hide();
+          $('.qpa-custom-dates-solution-report').addClass('is-visible');
         });
 
-        function show_custom_qpa_solution_report(query) {
-          var config = require('./main-process/db/config');
-          var sql = require('seriate');
-          sql.setDefaultConfig(config);
+        $('#qpa_custom_go_back').click(function() {
+          $('.qpa-date-selection-container').show();
+        });
 
-          sql.execute({
-            query: query
-          }).then(function(data) {
-            //- console.log(data);
-            custom_qpa_solution_avg_graphs.build_custom_range_solution_avgs_graphs(data)
-          }, function(err) {
-            console.log(err);
-          });
-        }
       });
