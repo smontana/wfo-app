@@ -265,7 +265,6 @@ var qpa_solution_custom_range_avgs = {
         show: false
       }
     });
-
   }
 };
 
